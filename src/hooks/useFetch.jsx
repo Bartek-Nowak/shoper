@@ -10,16 +10,14 @@ export function useFetch(url) {
     dataLimit: LOAD_LIMIT,
     dataEnd: false,
     isLoading: true,
-    error: false,
     errorMessage: null,
   });
 
   function checkDataEnd(prevData, nextData) {
+    if (prevData === null) return false;
     console.log(prevData);
     console.log(nextData);
-    if (prevData === null) return false;
-    if (prevData.length >= nextData.length) return true;
-    return false;
+    if (JSON.stringify(prevData) === JSON.stringify(nextData)) return true;
   }
 
   useEffect(() => {
@@ -30,7 +28,7 @@ export function useFetch(url) {
       .get(`${DB_URL}${url}${data.slug}_limit=${data.dataLimit}`)
       .then((response) => {
         setData((draft) => {
-          draft.dataEnd = checkDataEnd(draft.data, response.data);
+          draft.dataEnd = checkDataEnd(data.data, response.data);
           draft.data = response.data;
           draft.isLoading = false;
           draft.error = false;
@@ -38,13 +36,10 @@ export function useFetch(url) {
       })
       .catch((err) => {
         setData((draft) => {
-          draft.error = true;
-          draft.errorMessage = err;
+          draft.errorMessage = err.message;
         });
       });
   }, [data.dataLimit, data.slug]);
-
-  console.log(`${url}${data.slug}_limit=${data.dataLimit}`);
   return {
     data,
     setData,
