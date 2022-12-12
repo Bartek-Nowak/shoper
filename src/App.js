@@ -1,3 +1,9 @@
+import FilteredProductsList from "./components/FilteredProductsList.component";
+
 export default function App() {
-  return <div></div>;
+  return (
+    <div>
+      <FilteredProductsList />
+    </div>
+  );
 }
