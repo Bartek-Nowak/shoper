@@ -1,11 +1,13 @@
-function Product() {
-  return <p>Product</p>;
+function Product({ product }) {
+  return <p>{product.title}</p>;
 }
 
-export default function ProductsList() {
+export default function ProductsList({ products }) {
   return (
     <div>
-      <Product />
+      {products.map((product) => (
+        <Product product={product} />
+      ))}
     </div>
   );
 }

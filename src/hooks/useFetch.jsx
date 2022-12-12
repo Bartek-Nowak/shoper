@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect } from "react";
 import { useImmer } from "use-immer";
+import { DB_URL } from "../const";
 
 export function useFetch(url) {
   const [data, setData] = useImmer({
@@ -11,10 +12,11 @@ export function useFetch(url) {
   });
   useEffect(() => {
     axios
-      .get(`${url}`)
+      .get(`${DB_URL}${url}`)
       .then((response) => {
         setData((draft) => {
           draft.data = response.data;
+          draft.isLoading = false;
           draft.error = false;
         });
       })
