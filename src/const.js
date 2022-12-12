@@ -25,3 +25,4 @@ export const ALL_SELECT = {
   name: "All",
   value: "all",
 };
+export const LOAD_LIMIT = 5;
