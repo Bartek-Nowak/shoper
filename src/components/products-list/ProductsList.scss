@@ -1,0 +1,17 @@
+.products_list{
+  width: 100%;
+}
+
+.product {
+  width: 100%;
+  display: flex;
+  gap: 10px;
+  margin: 10px;
+  box-shadow: 8px 8px 24px -18px rgba(66, 68, 90, 1);
+  &__img {
+    object-fit: cover;
+    aspect-ratio: 1/1;
+    width: 200px;
+    max-width: 50%;
+  }
+}

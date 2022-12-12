@@ -7,6 +7,7 @@ import FilterBar from "../filter-bar/FilterBar.component";
 import Loading from "../loading/Loading.component";
 import ProductsList from "../products-list/ProductsList";
 import Error from "../error/Error.components";
+import "./FilteredProductsList.scss";
 
 function LoadMoreButton({ loading, end, handleOnClick }) {
   if (loading) {
@@ -14,7 +15,11 @@ function LoadMoreButton({ loading, end, handleOnClick }) {
   } else if (end) {
     return <EndProduct />;
   } else {
-    return <button onClick={handleOnClick}>Load more</button>;
+    return (
+      <button className="btn" onClick={handleOnClick}>
+        <span>Load more</span>
+      </button>
+    );
   }
 }
 
@@ -58,7 +63,7 @@ export default function FilteredProductsList() {
     return <Error error={products.errorMessage} />;
   } else {
     return (
-      <div>
+      <div className="filtered_products">
         <FilterBar setFilters={setFilters} />
         {!products.isLoading && <ProductsList products={filterProducts()} />}
         <LoadMoreButton
