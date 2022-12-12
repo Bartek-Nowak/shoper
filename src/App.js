@@ -1,4 +1,4 @@
-import FilteredProductsList from "./components/FilteredProductsList.component";
+import FilteredProductsList from "./components/filtered-products-list/FilteredProductsList.component";
 
 export default function App() {
   return (

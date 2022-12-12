@@ -1,12 +1,12 @@
 import { useEffect } from "react";
 import { useImmer } from "use-immer";
-import { ALL_SELECT, LOAD_LIMIT } from "../const";
-import { useFetch } from "../hooks/useFetch";
-import EndProduct from "./EndProducts.component";
-import FilterBar from "./FilterBar.component";
-import Loading from "./Loading.component";
-import ProductsList from "./ProductsList";
-import Error from "./Error.components";
+import { ALL_SELECT, LOAD_LIMIT } from "../../const";
+import { useFetch } from "../../hooks/useFetch";
+import EndProduct from "../end-product/EndProducts.component";
+import FilterBar from "../filter-bar/FilterBar.component";
+import Loading from "../loading/Loading.component";
+import ProductsList from "../products-list/ProductsList";
+import Error from "../error/Error.components";
 
 function LoadMoreButton({ loading, end, handleOnClick }) {
   if (loading) {

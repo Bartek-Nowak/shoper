@@ -1,4 +1,4 @@
-import { ALL_SELECT, SELECT_CATEGORY } from "../const";
+import { ALL_SELECT, SELECT_CATEGORY } from "../../const";
 
 function SelectFilter({ options, name, handleOnChange }) {
   return (
