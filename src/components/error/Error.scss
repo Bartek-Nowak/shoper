@@ -1,0 +1,10 @@
+.error_pop {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #0061dfba;
+  padding: 20px 50px;
+  border-radius: 5px;
+  color: white;
+}

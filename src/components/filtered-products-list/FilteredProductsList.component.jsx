@@ -56,6 +56,7 @@ export default function FilteredProductsList() {
     setProducts((draft) => {
       draft.slug = url;
       draft.dataLimit = LOAD_LIMIT;
+      draft.isLoading = true;
     });
   }, [filters.category]);
 
