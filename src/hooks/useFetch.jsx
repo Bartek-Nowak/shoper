@@ -6,7 +6,7 @@ import { DB_URL, LOAD_LIMIT } from "../const";
 export function useFetch(url) {
   const [data, setData] = useImmer({
     data: null,
-    url: url,
+    slug: "?",
     dataLimit: LOAD_LIMIT,
     dataEnd: false,
     isLoading: true,
@@ -15,8 +15,11 @@ export function useFetch(url) {
   });
 
   function checkDataEnd(prevData, nextData) {
+    console.log(prevData);
+    console.log(nextData);
     if (prevData === null) return false;
-    if (prevData.length === nextData.length) return true;
+    if (prevData.length >= nextData.length) return true;
+    return false;
   }
 
   useEffect(() => {
@@ -24,9 +27,8 @@ export function useFetch(url) {
       draft.dataEnd = false;
     });
     axios
-      .get(`${DB_URL}${data.url}?_limit=${data.dataLimit}`)
+      .get(`${DB_URL}${url}${data.slug}_limit=${data.dataLimit}`)
       .then((response) => {
-        console.log(response);
         setData((draft) => {
           draft.dataEnd = checkDataEnd(draft.data, response.data);
           draft.data = response.data;
@@ -40,7 +42,9 @@ export function useFetch(url) {
           draft.errorMessage = err;
         });
       });
-  }, [data.dataLimit, data.url]);
+  }, [data.dataLimit, data.slug]);
+
+  console.log(`${url}${data.slug}_limit=${data.dataLimit}`);
   return {
     data,
     setData,

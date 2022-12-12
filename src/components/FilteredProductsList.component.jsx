@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useImmer } from "use-immer";
 import { ALL_SELECT, LOAD_LIMIT } from "../const";
 import { useFetch } from "../hooks/useFetch";
@@ -5,7 +6,6 @@ import FilterBar from "./FilterBar.component";
 import ProductsList from "./ProductsList";
 
 function LoadMoreButton({ loading, end, handleOnClick }) {
-  
   if (loading) {
     return <p>Loading</p>;
   } else if (end) {
@@ -18,9 +18,12 @@ export default function FilteredProductsList() {
     brand: ALL_SELECT.value,
     category: ALL_SELECT.value,
   });
-  const url = `products`;
 
-  const { data: products, setData: setProducts } = useFetch(url);
+  const { data: products, setData: setProducts } = useFetch(`products?`);
+
+  const url = `${
+    filters.category !== ALL_SELECT.value ? `category=${filters.category}&` : ""
+  }${filters.brand !== ALL_SELECT.value ? `?brand=${filters.brand}&` : ""}`;
 
   function filterProducts() {
     return products.data.filter((product) => {
@@ -39,6 +42,11 @@ export default function FilteredProductsList() {
       return true;
     });
   }
+  useEffect(() => {
+    setProducts((draft) => {
+      draft.slug = url;
+    });
+  }, [filters.category]);
 
   return (
     <div>
