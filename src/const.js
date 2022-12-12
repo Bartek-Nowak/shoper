@@ -21,3 +21,7 @@ export const SELECT_CATEGORY = [
   "motorcycle",
   "lighting",
 ];
+export const ALL_SELECT = {
+  name: "All",
+  value: "all",
+};

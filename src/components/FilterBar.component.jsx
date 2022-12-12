@@ -1,4 +1,4 @@
-import { SELECT_CATEGORY } from "../const";
+import { ALL_SELECT, SELECT_CATEGORY } from "../const";
 
 function SelectFilter({ options, name, handleOnChange }) {
   return (
@@ -10,7 +10,7 @@ function SelectFilter({ options, name, handleOnChange }) {
         });
       }}
     >
-      <option value="">All</option>
+      <option value={ALL_SELECT.value}>{ALL_SELECT.name}</option>
       {options.map((option) => (
         <option key={option} value={option}>
           {option}
@@ -25,7 +25,7 @@ export default function FilterBar({ setFilters }) {
     <div>
       <SelectFilter
         options={SELECT_CATEGORY}
-        name="brand"
+        name="category"
         handleOnChange={setFilters}
       />
     </div>
