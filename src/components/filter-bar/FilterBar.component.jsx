@@ -1,5 +1,6 @@
-import { ALL_SELECT, SELECT_CATEGORY } from "../../const";
+import { ALL_SELECT, SELECT_BRAND, SELECT_CATEGORY } from "../../const";
 import "./FilterBar.scss";
+
 function SelectFilter({ options, name, handleOnChange }) {
   return (
     <select
@@ -26,6 +27,11 @@ export default function FilterBar({ setFilters }) {
       <SelectFilter
         options={SELECT_CATEGORY}
         name="category"
+        handleOnChange={setFilters}
+      />
+      <SelectFilter
+        options={SELECT_BRAND}
+        name="brand"
         handleOnChange={setFilters}
       />
     </div>

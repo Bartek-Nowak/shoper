@@ -19,7 +19,8 @@ export default function FilteredProductsList() {
 
   const url = `${
     filters.category !== ALL_SELECT.value ? `category=${filters.category}&` : ""
-  }${filters.brand !== ALL_SELECT.value ? `?brand=${filters.brand}&` : ""}`;
+  }${filters.brand !== ALL_SELECT.value ? `brand=${filters.brand}&` : ""}`;
+  
 
   useEffect(() => {
     setProducts((draft) => {
@@ -27,7 +28,7 @@ export default function FilteredProductsList() {
       draft.dataLimit = LOAD_LIMIT;
       draft.isLoading = true;
     });
-  }, [filters.category]);
+  }, [filters.category, filters.brand]);
 
   if (products.errorMessage) {
     return <Error error={products.errorMessage} />;
