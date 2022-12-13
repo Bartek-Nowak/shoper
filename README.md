@@ -27,4 +27,4 @@ In a second terminal, run project
 If you want to check error handling, don't start JSON server.
 
 ## My comments
-The extension of the project should be the dynamic download of categories and brands. The server should return an object with brands assigned to a given category. Thanks to this, the user will not see brands that do not produce products from the wrong category.
+The extension of the project should be the dynamic download of categories and brands. The server should return an object with brands assigned to a given category. Thanks to this, the user will not see brands that do not produce products from the wrong category. Unfortunately, I don't have time before the deadline. However, I hope that I will still get a chance to finish the project.
