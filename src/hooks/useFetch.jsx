@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect } from "react";
 import { useImmer } from "use-immer";
 import { DB_URL, LOAD_LIMIT } from "../const";
+import { checkDataEnd } from "../functions/checkDataEnd";
 
 export function useFetch(url) {
   const [data, setData] = useImmer({
@@ -13,12 +14,6 @@ export function useFetch(url) {
     errorMessage: null,
   });
 
-  function checkDataEnd(prevData, nextData) {
-    if (prevData === null) return false;
-    console.log(prevData);
-    console.log(nextData);
-    if (JSON.stringify(prevData) === JSON.stringify(nextData)) return true;
-  }
 
   useEffect(() => {
     setData((draft) => {
